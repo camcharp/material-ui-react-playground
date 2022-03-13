@@ -1,22 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  FormControlLabel
+} from '@mui/material';
+import Save from '@mui/icons-material/Save';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+function CheckBoxComponent() {
+  const { checked, setChecked } = useState(true)
+  return (
+    <div>
+      <FormControlLabel
+        control={<Checkbox
+          checked={ checked }
+          onChange={(e) => setChecked(e.target.checked) }
+        />}
+        label="Testing checkbox"
+      />
+    </div>
+  )
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <CheckBoxComponent />
+        <ButtonGroup
+          size="big"
+          color="primary"
+          variant="contained"
         >
-          Learn React
-        </a>
+          <Button>
+            <Save />
+            Save 
+          </Button>
+          <Button color="secondary">
+            <DeleteIcon />
+            Discard
+          </Button>
+
+        </ButtonGroup>
       </header>
     </div>
   );
